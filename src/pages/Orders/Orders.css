@@ -1,14 +1,14 @@
-/* src/pages/Orders/Orders.css */
-
 .orders-container {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  height: 100vh;
+  padding: 2px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  border-radius: 5px;
 }
 
 .order-list {
-  flex-grow: 1;
-  padding: 20px;
+  padding: 10px;
   overflow-y: auto;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .orders-footer {
-  padding: 20px;
+  padding: 15px;
   border-top: 1px solid #ddd;
   background-color: #fff;
 }
@@ -74,7 +74,6 @@
   color: #555;
 }
 
-/* Estilos para o botão de edição no OrderCard (se ainda não tiver) */
 .edit-button {
   background: none;
   border: none;
@@ -89,7 +88,6 @@
   color: #e31837;
 }
 
-/* Estilos para Paginação */
 .pagination-controls {
   display: flex;
   justify-content: center;
@@ -105,17 +103,15 @@
   color: #555;
 }
 
-/* Ajuste para o Input dentro dos filtros, se necessário */
 .filters-section .input-container {
-  margin-bottom: 0; /* Remove margem inferior padrão se o Input já tiver */
+  margin-bottom: 0;
 }
 
-/* NOVO: Estilos para a seção de filtros */
 .filters-section {
-  padding: 15px 20px;
+  padding: 12px 18px;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ddd;
-  display: grid; /* Usando grid para organizar os inputs */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Colunas responsivas */
-  gap: 15px; /* Espaçamento entre os inputs */
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 5px;
 }

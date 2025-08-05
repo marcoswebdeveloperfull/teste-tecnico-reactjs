@@ -29,9 +29,7 @@ body {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  background-color: #fff;
   color: #333;
-  min-height: 100vh;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   overflow: hidden;
 }

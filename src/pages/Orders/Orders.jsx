@@ -14,20 +14,17 @@ const Orders = () => {
   const [totalValue, setTotalValue] = useState(0);
   const [loading, setLoading] = useState(false);
   
-  // Estados para a funcionalidade de edição
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [editingOrder, setEditingOrder] = useState(null); 
   const [editedDescription, setEditedDescription] = useState(''); 
   const [editError, setEditError] = useState(null); 
 
-  // Estados para filtro
   const [filterCnpj, setFilterCnpj] = useState('');
-  const [filterName, setFilterName] = useState(''); // Corresponde à descrição do pedido
-  const [filterCode, setFilterCode] = useState(''); // Corresponde ao ID do pedido
+  const [filterName, setFilterName] = useState('');
+  const [filterCode, setFilterCode] = useState('');
 
-  // Estados para paginação
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // Define quantos itens por página
+  const itemsPerPage = 5;
 
   const navigate = useNavigate();
 
@@ -36,7 +33,6 @@ const Orders = () => {
   }, []);
 
   useEffect(() => {
-    // Calcula o valor total sempre que os pedidos selecionados mudam
     const newTotal = selectedOrders.reduce((sum, order) => sum + order.value, 0);
     setTotalValue(newTotal);
   }, [selectedOrders]);
@@ -44,8 +40,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const response = await getOrders(); // Usa a função getOrders
-      // Mock de dados da API para o exemplo
+      const response = await getOrders();
       const mockOrders = [
         { id: '1', description: '100 Garrafas Galpin', value: 250.00, status: 'Pendente', cnpj: '12.345.678/0001-90', companyName: 'Galpin Bebidas'},
         { id: '2', description: '450 Lottas Galpin', value: 100.00, status: 'Pendente', cnpj: '12.345.678/0001-90', companyName: 'Galpin Bebidas'},
@@ -61,32 +56,27 @@ const Orders = () => {
     }
   };
 
-  // Lógica de filtragem e paginação usando useMemo para otimização
   const paginatedOrders = useMemo(() => {
     let filtered = orders;
 
-    // Aplica filtro por CNPJ (se houver, assumindo que orders têm propriedade cnpj)
     if (filterCnpj) {
       filtered = filtered.filter(order => 
         order.cnpj && order.cnpj.toLowerCase().includes(filterCnpj.toLowerCase())
       );
     }
 
-    // Aplica filtro por Nome (descrição)
     if (filterName) {
       filtered = filtered.filter(order => 
         order.description.toLowerCase().includes(filterName.toLowerCase())
       );
     }
 
-    // Aplica filtro por Código (ID)
     if (filterCode) {
       filtered = filtered.filter(order => 
         String(order.id).toLowerCase().includes(filterCode.toLowerCase())
       );
     }
 
-    // Paginação
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return filtered.slice(startIndex, endIndex);
@@ -132,8 +122,6 @@ const Orders = () => {
     setEditError(null); 
 
     try {
-      // Valida a descrição com Zod antes de enviar
-      // orderDescriptionSchema.parse({ description: editedDescription }); // Removido para evitar erro de importação se Zod não estiver configurado
 
       if (editingOrder && editedDescription.trim() !== '') {
         await updateOrder(editingOrder.id, editedDescription); 
@@ -175,23 +163,22 @@ const Orders = () => {
     <div className="orders-container">
       <Header title="Pedidos Pendentes" />
 
-      {/* Seção de Filtros */}
       <div className="filters-section">
         <Input 
           label="Filtrar por CNPJ"
-          placeholder="CNPJ do cliente"
+          placeholder="CNPJ"
           value={filterCnpj}
           onChange={(e) => setFilterCnpj(e.target.value)}
         />
         <Input 
           label="Filtrar por Nome"
-          placeholder="Nome do pedido"
+          placeholder="Nome"
           value={filterName}
           onChange={(e) => setFilterName(e.target.value)}
         />
         <Input 
           label="Filtrar por Código"
-          placeholder="Código do pedido"
+          placeholder="Código"
           value={filterCode}
           onChange={(e) => setFilterCode(e.target.value)}
         />
@@ -201,7 +188,7 @@ const Orders = () => {
         {loading ? (
           <p className="loading">Carregando pedidos...</p>
         ) : (
-          paginatedOrders.length > 0 ? ( // Usa paginatedOrders aqui
+          paginatedOrders.length > 0 ? (
             paginatedOrders.map((order) => (
               <OrderCard
                 key={order.id}
@@ -217,7 +204,6 @@ const Orders = () => {
         )}
       </div>
 
-      {/* Controles de Paginação */}
       {totalPages > 1 && (
         <div className="pagination-controls">
           <Button 
@@ -248,7 +234,6 @@ const Orders = () => {
         </Button>
       </div>
 
-      {/* Modal de Edição */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <h3>Editar Pedido</h3>
         {editError && <p className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{editError}</p>}

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Header from '../../components/Header/Header';
-import { sendPaymentReturn } from '../../api/api';
-import './PaymentStatus.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import Header from "../../components/Header/Header";
+import { sendPaymentReturn } from "../../api/api";
+import "./PaymentStatus.css";
 
 const PaymentStatus = () => {
-  const [status, setStatus] = useState('pending');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [status, setStatus] = useState("pending");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,37 +15,38 @@ const PaymentStatus = () => {
       const { paymentMethod } = location.state || {};
 
       if (!paymentMethod) {
-        setStatus('error');
-        setErrorMessage('Dados de pagamento não encontrados.');
+        setStatus("error");
+        setErrorMessage("Dados de pagamento não encontrados.");
         return;
       }
 
       try {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 3000));
 
         const paymentData = {
-          orderId: 'algum-id-de-pedido',
+          orderId: "algum-id-de-pedido",
           paymentMethod,
           value: 123.45,
         };
 
         const response = await sendPaymentReturn(paymentData);
 
-        if (response.data.status === 'success') {
-          setStatus('approved');
+        if (response.data.status === "success") {
+          setStatus("approved");
           const timer = setTimeout(() => {
-            navigate('/pedidos');
+            navigate("/pedidos");
           }, 2000);
           return () => clearTimeout(timer);
         } else {
-          setStatus('error');
-          setErrorMessage('O pagamento não foi aprovado.');
+          setStatus("error");
+          setErrorMessage("O pagamento não foi aprovado.");
         }
-
       } catch (error) {
-        console.error('Erro ao processar o pagamento:', error);
-        setStatus('error');
-        setErrorMessage('Ocorreu um erro ao processar seu pagamento. Tente novamente.');
+        console.error("Erro ao processar o pagamento:", error);
+        setStatus("error");
+        setErrorMessage(
+          "Ocorreu um erro ao processar seu pagamento. Tente novamente."
+        );
       }
     };
 
@@ -53,27 +54,31 @@ const PaymentStatus = () => {
   }, [navigate, location.state]);
 
   const renderStatusContent = () => {
-    if (status === 'pending') {
+    if (status === "pending") {
       return (
-        <div className="status-pending">
-          <div className="spinner"></div>
-          <p>Aguardando o Pagamento</p>
+        <div className="payment-status-container">
+          <div className="status-content">
+            <div className="spinner"></div>
+            <p>Aguardando pagamento...</p>
+          </div>
         </div>
       );
     }
 
-    if (status === 'approved') {
+    if (status === "approved") {
       return (
-        <div className="status-approved">
-          <div className="checkmark-container">
-            <div className="checkmark"></div>
+        <div className="status-content">
+          <div className="status-approved">
+            <div className="checkmark-container">
+              <div className="checkmark"></div>
+            </div>
+            <p>Pagamento Aprovado</p>
           </div>
-          <p>Pagamento Aprovado</p>
         </div>
       );
     }
-    
-    if (status === 'error') {
+
+    if (status === "error") {
       return (
         <div className="status-error">
           <div className="error-icon">❌</div>
@@ -87,9 +92,7 @@ const PaymentStatus = () => {
   return (
     <div className="payment-status-container">
       <Header title="Pagamento" />
-      <div className="status-content">
-        {renderStatusContent()}
-      </div>
+      <div className="status-content">{renderStatusContent()}</div>
     </div>
   );
 };
