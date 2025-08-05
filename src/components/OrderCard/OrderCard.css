@@ -1,0 +1,40 @@
+.order-card-container {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-card-container:hover {
+  background-color: #f1f1f1;
+}
+
+.order-card-container.selected {
+  border-color: #e31837;
+  background-color: #fff0f0;
+}
+
+.order-card-checkbox {
+  margin-right: 15px;
+}
+
+.order-card-checkbox input[type="checkbox"] {
+  accent-color: #e31837;
+}
+
+.order-card-details {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-card-value {
+  font-weight: bold;
+  color: #e31837;
+}

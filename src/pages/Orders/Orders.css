@@ -1,0 +1,121 @@
+/* src/pages/Orders/Orders.css */
+
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.order-list {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-item:hover {
+  background-color: #f1f1f1;
+}
+
+.order-item.selected {
+  border-color: #e31837;
+  background-color: #fff0f0;
+}
+
+.order-checkbox {
+  margin-right: 15px;
+}
+
+.order-checkbox input[type="checkbox"] {
+  accent-color: #e31837;
+}
+
+.order-details {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-value {
+  font-weight: bold;
+  color: #e31837;
+}
+
+.orders-footer {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Estilos para o botão de edição no OrderCard (se ainda não tiver) */
+.edit-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.edit-button:hover {
+  color: #e31837;
+}
+
+/* Estilos para Paginação */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  gap: 15px;
+}
+
+.pagination-controls span {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Ajuste para o Input dentro dos filtros, se necessário */
+.filters-section .input-container {
+  margin-bottom: 0; /* Remove margem inferior padrão se o Input já tiver */
+}
+
+/* NOVO: Estilos para a seção de filtros */
+.filters-section {
+  padding: 15px 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  display: grid; /* Usando grid para organizar os inputs */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Colunas responsivas */
+  gap: 15px; /* Espaçamento entre os inputs */
+}
