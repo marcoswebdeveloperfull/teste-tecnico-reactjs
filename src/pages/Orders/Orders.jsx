@@ -44,9 +44,9 @@ const Orders = () => {
       const mockOrders = [
         { id: '1', description: '100 Garrafas Galpin', value: 250.00, status: 'Pendente', cnpj: '12.345.678/0001-90', companyName: 'Galpin Bebidas'},
         { id: '2', description: '450 Lottas Galpin', value: 100.00, status: 'Pendente', cnpj: '12.345.678/0001-90', companyName: 'Galpin Bebidas'},
-        { id: '3', description: '100 Garrafas - Galpin Kleiter', value: 220.00, status: 'Pendente', cnpj: '98.765.432/0001-10', companyName: 'Kleiter Distribuicao'},
-        { id: '4', description: '60 Lottas Crystal Beer', value: 490.00, status: 'Pendente', cnpj: '11.222.333/0001-44', companyName: 'Crystal Brewery'},
-        { id: '5', description: '50 Garrafas Black Princess', value: 120.00, status: 'Pendente', cnpj: '11.222.333/0001-44', companyName: 'Crystal Brewery'},
+        { id: '3', description: '371 Garrafas - Galpin Kleiter', value: 220.00, status: 'Pendente', cnpj: '98.765.432/0001-10', companyName: 'Kleiter Distribuicao'},
+        { id: '4', description: '690 Lottas Crystal Beer', value: 490.00, status: 'Pendente', cnpj: '11.222.333/0001-44', companyName: 'Crystal Brewery'},
+        { id: '5', description: '540 Garrafas Black Princess', value: 120.00, status: 'Pendente', cnpj: '11.222.333/0001-44', companyName: 'Crystal Brewery'},
       ];
       setOrders(mockOrders);
     } catch (error) {
@@ -122,7 +122,6 @@ const Orders = () => {
     setEditError(null); 
 
     try {
-
       if (editingOrder && editedDescription.trim() !== '') {
         await updateOrder(editingOrder.id, editedDescription); 
 
@@ -154,7 +153,22 @@ const Orders = () => {
   };
 
   const handlePay = () => {
-    navigate('/pagamento', { state: { totalValue } });
+    if (selectedOrders.length === 0) {
+      alert("Por favor, selecione pelo menos um pedido para pagar.");
+      return;
+    }
+
+    const consolidatedOrder = {
+        orderId: selectedOrders.map(order => order.id).join(', '),
+        totalValue: totalValue,
+        items: selectedOrders.map(order => ({
+            name: order.description,
+            quantity: 1,
+            price: order.value,
+        })),
+    };
+
+    navigate('/pagamento', { state: { order: consolidatedOrder } });
   };
 
   const isButtonDisabled = selectedOrders.length === 0;

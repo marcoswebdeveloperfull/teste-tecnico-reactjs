@@ -1,7 +1,52 @@
+.order-details-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.order-details-summary h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.order-details-summary p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 0 5px 0;
+}
+
+.order-details-summary h4 {
+  font-size: 1rem;
+  color: #555;
+  margin: 15px 0 5px 0;
+}
+
+.order-items-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-items-list li {
+  font-size: 0.9rem;
+  color: #777;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-items-list li:last-child {
+  border-bottom: none;
+}
+
 .payment-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 630px;
 }
 
 .payment-content {

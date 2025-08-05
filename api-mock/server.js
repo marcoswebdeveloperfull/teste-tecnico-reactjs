@@ -11,9 +11,9 @@ const mockData = {
   orders: [
     { id: '1', description: '100 Garrafas Galpin', value: 250.00, status: 'Pendente' },
     { id: '2', description: '450 Lottas Galpin', value: 100.00, status: 'Pendente' },
-    { id: '3', description: '100 Garrafas - Galpin Kleiter', value: 220.00, status: 'Pendente' },
-    { id: '4', description: '60 Lottas Crystal Beer', value: 490.00, status: 'Pendente' },
-    { id: '5', description: '50 Garrafas Black Princess', value: 120.00, status: 'Pendente' },
+    { id: '3', description: '371 Garrafas - Galpin Kleiter', value: 220.00, status: 'Pendente' },
+    { id: '4', description: '690 Lottas Crystal Beer', value: 490.00, status: 'Pendente' },
+    { id: '5', description: '540 Garrafas Black Princess', value: 120.00, status: 'Pendente' },
   ],
 };
 

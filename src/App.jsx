@@ -25,7 +25,7 @@ function App() {
         }
       />
       <Route
-        path="/pagamento/:orderId?" // <-- Adicionado '?' para tornar o :orderId opcional
+        path="/pagamento/:orderId?"
         element={
           <PrivateRoute>
             <Payment />
