@@ -4,7 +4,7 @@ import { login as apiLogin } from '../api/api';
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
-
+60
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem('token')
