@@ -73,19 +73,21 @@ A aplicação será iniciada e estará disponível em http://localhost:5173.
 
 A estrutura de diretórios foi desenhada para separar as responsabilidades e facilitar a manutenção e o crescimento da base de código.
 
-.
-├── src/
-│   ├── api/             # Funções de simulação de chamadas a APIs
-│   ├── components/      # Componentes reutilizáveis (Button, Header, Input, etc.)
-│   ├── context/         # Provedores de contexto para o estado global
-│   ├── pages/           # Componentes de página (rotas da aplicação)
-│   ├── App.jsx          # Componente principal de roteamento
-│   ├── main.jsx         # Ponto de entrada da aplicação
-│   └── ...
-├── .gitignore           # Arquivos a serem ignorados pelo Git
-├── index.html           # Arquivo HTML principal
-├── package.json         # Dependências e scripts do projeto
-└── ...
+* **`public/`**: Contém arquivos estáticos que não são processados pelo Vite, como o `index.html` e o `react.svg`.
+* **`src/`**: Diretório principal onde o código-fonte da aplicação reside.
+* **`src/api/`**: Responsável por agrupar a lógica e as funções relacionadas a chamadas de API.
+* **`src/assets/`**: Pasta para armazenar ativos reutilizáveis, como imagens, ícones e fontes.
+* **`src/components/`**: Contém os componentes de UI reutilizáveis da aplicação. Cada componente pode ter seu próprio diretório com seus arquivos `css` e `jsx`.
+* **`src/context/`**: Gerencia o estado global da aplicação usando o Context API do React.
+* **`src/pages/`**: Agrupa os componentes que representam as páginas ou rotas da aplicação, como `Login`, `Orders`, etc.
+* **`App.jsx`**: Componente raiz da aplicação, onde a lógica de roteamento e a estrutura principal são definidas.
+* **`index.css`**: Arquivo para estilos CSS globais.
+* **`main.jsx`**: Ponto de entrada da aplicação, onde o componente `App` é renderizado.
+* **`.gitignore`**: Define arquivos e diretórios que devem ser ignorados pelo Git.
+* **`index.html`**: O arquivo HTML principal que serve como o ponto de entrada da aplicação.
+* **`package-lock.json`**: Garante que as dependências do projeto permaneçam as mesmas em diferentes ambientes.
+* **`package.json`**: Lista as dependências do projeto e scripts de execução.
+* **`vite.config.js`**: Arquivo de configuração do Vite.
 
 Agradecimento
 Obrigado por dedicar seu tempo para analisar este projeto. Estou à disposição para quaisquer dúvidas ou feedback.
