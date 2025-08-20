@@ -46,28 +46,50 @@ Para configurar e executar o projeto localmente, siga os passos abaixo:
 
 ### Pré-requisitos
 
-Certifique-se de que o **Node.js** e o **npm** (ou yarn) estejam instalados em sua máquina.
+Certifique-se de que o **Node.js** e o **npm** ou **yarn** estejam instalados em sua máquina.
+
+### Imagens dos terminais
+
+**Terminal 1 API-MOCK**  
+<img width="501" height="304" alt="image" src="https://github.com/user-attachments/assets/44497ed2-7c83-49d4-aec4-7e587ef38f94" />
+
+**Terminal 2 TESTE-REACTJS**  
+<img width="388" height="592" alt="image" src="https://github.com/user-attachments/assets/ad43f750-25dd-49c8-add3-b4693e0ac3d6" />
 
 ### Guia de Execução
 
-1. **Clone o repositório**:
+1. **Clone o repositório:**
    ```bash
-   git clone [URL_DO_SEU_REPOSITORIO]
+   git clone https://github.com/marcoswebdeveloperfull/teste-tecnico-reactjs.git
 
-2. **Navegue até o diretório do projeto:**:
+2. **Navegue até o diretório do projeto:**
    ```bash
-   cd nome-do-seu-projeto
+   cd teste-reactjs
 
-3. **Instale as dependências:**:
+3. **Instale as dependências:**
    ```bash
    npm install
 
-4. **Inicie o servidor de desenvolvimento:**:
+4. **Inicie a API de Mock:**  
+4.1. **A API de mock deve ser executada primeiro, pois a aplicação front-end depende dela para funcionar.**
+   ```bash
+   cd api-mock
+   node server.js
+
+**Você verá a mensagem Mock API rodando em http://localhost:3001 no seu terminal,**  
+**confirmando que a API está ativa. Deixe este terminal aberto.**
+
+
+5. **Inicie 2° servidor de desenvolvimento:**  
+5.1. **Navegue até o diretório do projeto:**
+   ```bash
+   cd teste-reactjs
+
+6. **Inicie a aplicação React:**
    ```bash
    npm run dev
 
 A aplicação será iniciada e estará disponível em http://localhost:5173.
-
 
 ### 📂 Estrutura do Projeto
 
@@ -87,7 +109,9 @@ A estrutura de diretórios foi desenhada para separar as responsabilidades e fac
 * **`index.html`**: O arquivo HTML principal que serve como o ponto de entrada da aplicação.
 * **`package-lock.json`**: Garante que as dependências do projeto permaneçam as mesmas em diferentes ambientes.
 * **`package.json`**: Lista as dependências do projeto e scripts de execução.
-* **`vite.config.js`**: Arquivo de configuração do Vite.
+* **`vite.config.js`**: Arquivo de configuração do Vite.        
 
-Agradecimento
+
+
+**Agradecimento**  
 Obrigado por dedicar seu tempo para analisar este projeto. Estou à disposição para quaisquer dúvidas ou feedback.
